@@ -4,6 +4,6 @@ console.log(names);
 const data = require("./alternative-syntax")
 console.log(data);
 console.log(data)
-
+require('./invokingMethod'); // This code will run because we run the code inside the file located inside the require.
 sayHi(names.john);
 sayHi(names.peter);

@@ -1,9 +1,16 @@
-const names = require('./sharing&secret');//require is how Node.js loads code from somewhere else(sharing&secret) and uses it in the current running app.
-const sayHi = require('./utils');
-console.log(names);
-const data = require("./alternative-syntax")
-console.log(data);
-console.log(data)
-require('./invokingMethod'); // This code will run because we run the code inside the file located inside the require.
-sayHi(names.john);
-sayHi(names.peter);
+const {readFileSync, writeFileSync} = require('fs');
+const { encode } = require('punycode');
+
+const first = readFileSync('./text1.txt', 'utf8')
+console.log(first);
+
+const newAddedContent = 'This is the new content after the file has been changed.'
+writeFileSync('./text2.txt', 
+   newAddedContent,
+   {
+      // encoding: 'utf8', //Node translates the text to utf8
+      // flag: 'a',//This one here adds the new content at the end of the old text.
+      // //flag: 'w'
+      // mode: '0o666'
+   } 
+)

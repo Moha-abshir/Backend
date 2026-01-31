@@ -1,8 +1,6 @@
-//GLOBALS  - No window
-//Global variables:
+const names = require('./sharing&secret');//require is how Node.js loads code from somewhere else(sharing&secret) and uses it in the current running app.
+const sayHi = require('./utils');
+console.log(names);
 
-// __dirname   - path to current directory
-// __filename  - file name
-// require     - function to use modules (CommonJS)
-// module      - info about current module (file)
-// process     - info about env where the program is being executed
+sayHi(names.john);
+sayHi(names.peter);

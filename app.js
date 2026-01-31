@@ -1,16 +1,34 @@
-const {readFileSync, writeFileSync} = require('fs');
+const { readFile, writeFile } = require('fs');
 
-const first = readFileSync('./text1.txt', 'utf8')
-console.log(first);
+readFile('./text1.txt', 'utf8', (err, result)=>{
+   if(err){
+      console.log(err);
+      return;
+   }
+   console.log('Reading starting!!')
+   console.log(`The result is: ${result}`);
 
-const newAddedContent = 'This is the new content after the file has been changed.'
-writeFileSync('./text2.txt', 
-   newAddedContent,
-   {
-      encoding: 'utf8', //Node translates the text to utf8
-      flag: 'a',//This one here adds the new content at the end of the old text.
-      //flag: 'w', This one here overrites the entire file.
-      //flag: 'r', It opens the file in reading mode. You will get an error if you try to edit/write in this file in the future
-   } 
-);
-console.log(readFileSync('./text2.txt','utf8'))
+   //If we place a writeFile outside of this callback, it might finish first before the readFile. So we just place it within the readfile to prevent it.
+   const addedContent = "\nAdditional message"
+   writeFile('./text1.txt', addedContent, {
+      encoding: 'utf8',
+      flag: 'a'
+   },(err)=>{ //As you can see, writeFile has no return.
+      if (err){
+         console.log(err);
+         return;
+      }
+      console.log("Writing starting!!")
+   })
+   //Lets see if the content of the file changed.
+   readFile('./text1.txt', {
+      encoding: 'utf8',
+      flag: 'r'
+   }, (err, result)=>{
+      if(err){
+         console.log(err);
+         return;
+      }
+      console.log(`The new result is: ${result}`)
+   })
+})

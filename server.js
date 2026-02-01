@@ -1,8 +1,11 @@
 const http = require('http');
 const server = http.createServer((req, res)=>{
+   res.writeHead(200, { 'Content-Type': 'text/html' });
    if(req.url === '/'){
       res.write(`
-         <h1>Welcome to the homepage</h1>
+         <h1>Welcome to my Node Server</h1>
+         <p>This is a paragraph with <strong>bold</strong> text.</p>
+         <ul><li>Item 1</li><li>Item 2</li></ul>
       `);
       res.end();
    }

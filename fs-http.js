@@ -1,6 +1,5 @@
 const http = require('http');
-const { readFile, writeFile } = require('fs');
-const { isContext } = require('vm');
+const { readFile } = require('fs');
 
 const server = http.createServer((req, res)=>{
    if(req.url === '/'){
@@ -12,6 +11,7 @@ const server = http.createServer((req, res)=>{
             res.end();
          }
          res.writeHead(200, {'Content-Type': 'text/html' });//It is supposed to be text/html  because what we are displaying a HTML file.
+                                                            //Otherwise the whole of the html will be the one displayed,
          res.write(result);
          res.end();//crucial. Do not forget it.
       })

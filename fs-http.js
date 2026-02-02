@@ -12,6 +12,7 @@ const server = http.createServer((req, res)=>{
          }
          res.writeHead(200, {'Content-Type': 'text/html' });//It is supposed to be text/html  because what we are displaying a HTML file.
                                                             //Otherwise the whole of the html will be the one displayed,
+         console.log("A user entered the port"); //Logs out if the server is successfully opened.
          res.write(result);
          res.end();//crucial. Do not forget it.
       })

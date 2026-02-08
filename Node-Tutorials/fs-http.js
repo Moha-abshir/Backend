@@ -31,7 +31,7 @@ const server = http.createServer((req, res)=>{
    if(req.url === '/'){
       res.writeHead(200, {"content-type": 'text/html'});
       res.write(homePage);
-      res.end()
+      res.end();
    }
 })
 server.listen(5000,()=>{

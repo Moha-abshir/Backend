@@ -17,5 +17,5 @@
 
 //LETS TRY TO DO DATA TRANSFER USING PIPE() METHOD.
 const readFile = createReadStream('./bigFileExample.txt', 'utf8');
-const writeFile = createWriteStream('./copyOfbigFileExample.txt');
+const writeFile = createWriteStream('./copyOfbigFileExample.txt');//If the file does not exist, Node will create it 
 readFile.pipe(writeFile); // Controls everything: reads, writes and manages the speed of both. Handles BACKPRESSURE

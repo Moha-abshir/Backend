@@ -5,7 +5,7 @@ const server = http.createServer((req, res)=>{
    //Create the stream first
    const stream = createReadStream('./bigFileExample.txt', {
       encoding: 'utf8',
-      highWaterMark: 9000
+      highWaterMark: 9000 //controls the size of the chunk in bytes
    });
 
    stream.on('data', (chunk)=>{
